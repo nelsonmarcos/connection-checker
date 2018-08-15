@@ -1,15 +1,14 @@
 import time
 import http.client as httplib
 
-#domains = ['https://www.globo.com', 'https://www.google.com.br', 'https://www.facebook.com']
-domains = ['localhost:8000']
+domains = ['www.google.com', 'www.facebook.com', 'www.amazon.com']
 toleration = 0
 
 def is_internet_down(domains, toleration):
     counter = 0
     status = False
     for domain in domains:
-        conn = httplib.HTTPConnection(domain, timeout=2)
+        conn = httplib.HTTPSConnection(domain, timeout=2)
         try:
             conn.request("HEAD", "/")
             conn.close()
